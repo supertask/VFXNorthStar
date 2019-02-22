@@ -1,0 +1,119 @@
+{
+    "list": [
+        {
+            "name": "Left Eye",
+            "localPose": {
+                "position": {
+                    "x": -0.03204166144132614,
+                    "y": -0.0030050985515117647,
+                    "z": 0.02070000022649765
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 4.0261644387341869e-14,
+                    "z": 4.5102803599133409e-14,
+                    "w": 1.0
+                }
+            },
+            "localScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "vertexIndices": [],
+            "controlPoints": []
+        },
+        {
+            "name": "Right Eye",
+            "localPose": {
+                "position": {
+                    "x": 0.03204166144132614,
+                    "y": -0.0030050985515117647,
+                    "z": 0.02070000022649765
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 4.0261644387341869e-14,
+                    "z": 4.5102803599133409e-14,
+                    "w": 1.0
+                }
+            },
+            "localScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "vertexIndices": [],
+            "controlPoints": []
+        },
+        {
+            "name": "Left Screen",
+            "localPose": {
+                "position": {
+                    "x": 0.0,
+                    "y": -0.019999999552965165,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                }
+            },
+            "localScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "vertexIndices": [],
+            "controlPoints": []
+        },
+        {
+            "name": "Right Screen",
+            "localPose": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                }
+            },
+            "localScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "vertexIndices": [],
+            "controlPoints": []
+        },
+        {
+            "name": "Leap Hand Controller",
+            "localPose": {
+                "position": {
+                    "x": -0.000010114869837707374,
+                    "y": 0.03521612286567688,
+                    "z": 0.10553791373968125
+                },
+                "rotation": {
+                    "x": 0.08715246617794037,
+                    "y": 0.008693350479006768,
+                    "z": -0.0007605699356645346,
+                    "w": 0.9961567521095276
+                }
+            },
+            "localScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "vertexIndices": [],
+            "controlPoints": []
+        }
+    ]
+}
