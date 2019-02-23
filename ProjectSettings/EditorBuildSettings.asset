@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/SimpleMapping/SimpleMapping.unity
+    path: Assets/common/SimpleMapping/SimpleMapping.unity
     guid: ea63234e4d300154ca3650203450f2dd
   - enabled: 1
     path: Assets/lightningEffect/Scenes/LightningOnNorthStar.unity
