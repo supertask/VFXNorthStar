@@ -8,10 +8,14 @@ public class HandUtil
 {
     public static int LEFT = 0;
     public static int RIGHT = 1;
-    private bool[] isOpendHands;
+    private bool[] isOpenedHands;
+    private bool[,] isOpenedFingers;
 
     public HandUtil() {
-        this.openedHands = new bool[2] { false, false };
+        this.isOpenedHands = new bool[2];
+        this.isOpenedHands.Fill(false);
+        this.isOpenedFingers = new bool[2, 5];
+        this.isOpenedFingers.Fill(false);
     }
 
     /*
@@ -51,27 +55,52 @@ public class HandUtil
         return true;
     }
 
+    /*
+     * 
+     */
+    public void SaveHandsState(Hand[] hands) {
+        this.isOpenedHands[HandUtil.LEFT] = HandUtil.IsOpenedFiveFingers(hands[HandUtil.LEFT]);
+        this.isOpenedHands[HandUtil.RIGHT] = HandUtil.IsOpenedFiveFingers(hands[HandUtil.RIGHT]);
+    }
 
-    public static bool OpenedHandTrigger(Hand hand, int handId)
+    /*
+     * Returns whether a hand is just opened from a state of closed hand
+     * @param hand: LeapMotion Hand Model
+     * @param handId: HandUtil.LEFT(=0) or HandUtil.RIGHT(=1)
+     * @return whether it's opened (true or false)
+     */
+    public bool JustOpenedHandOn(Hand hand, int handId)
     {
         //過去手を閉じていて，現在の手が存在し，その手の指が全部開くとき
-        if (!this.isOpenHands[handId] && hand != null && this.IsOpenFiveFingers(hand) {
-            this.isOpenHands[handId] = true; //Just opened hand
-            return true; //Not Opened
+        if (!this.isOpenedHands[handId] && hand != null && HandUtil.IsOpenedFiveFingers(hand)) {
+            this.isOpenedHands[handId] = true; //Just opened hand
+            return true; //Opened
         }
         return false; //Not Opened
     }
 
-    public static bool ClosedHandTrigger(Hand hand, int handId)
+    /*
+     * Returns whether a hand is just closed from a state of opened hand
+     * @param hand: LeapMotion Hand Model
+     * @param handId: HandUtil.LEFT(=0) or HandUtil.RIGHT(=1)
+     * @return whether it's opened (true or false)
+     */
+    public bool JustClosedHandOn(Hand hand, int handId)
     {
         //過去手を開いていて，現在の手が存在し，その手の指が全部閉じるとき
-        if (this.openedHands[handId] && hand != null && !HandUtil.IsOpenFiveFingers(hand)) {
-            this.isOpenHands[handId] = false; //Just closed hand
+        if (this.isOpenedHands[handId] && hand != null && !HandUtil.IsOpenedFiveFingers(hand)) {
+            this.isOpenedHands[handId] = false; //Just closed hand
             return true; //Closed
         }
         return false; //Not Closed
     }
 
+    public static bool JustOpendIndexFinger(Hand hand) {
+        foreach (Finger f in hand.Fingers) {
+            if (f.IsExtended)
+        }
+
+    }
 
     public static Vector3 GetVector3(Vector v) {
         return new Vector3(v.x, v.y, v.z);
