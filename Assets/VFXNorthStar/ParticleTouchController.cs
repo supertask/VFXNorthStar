@@ -24,21 +24,22 @@ public class ParticleTouchController : MonoBehaviour
         Frame frame = this.m_Provider.CurrentFrame;
         Hand[] hands = HandUtil.GetCorrectHands(frame); //0=LEFT, 1=RIGHT
 
-        if (this.handUtil.JustOpenedHandOn(hands[HandUtil.LEFT], HandUtil.LEFT)) {
+        if (this.handUtil.JustOpenedHandOn(hands, HandUtil.LEFT)) {
             Debug.Log("Just OPENED LEFT hand");
         }
-        else if (this.handUtil.JustClosedHandOn(hands[HandUtil.LEFT], HandUtil.LEFT)) {
+        else if (this.handUtil.JustClosedHandOn(hands, HandUtil.LEFT)) {
             Debug.Log("Just CLOSED LEFT hand");
         }
 
-        if (this.handUtil.JustOpenedHandOn(hands[HandUtil.RIGHT], HandUtil.RIGHT)) {
+        if (this.handUtil.JustOpenedHandOn(hands, HandUtil.RIGHT)) {
             Debug.Log("Just OPENED RIGHT hand");
         }
-        else if (this.handUtil.JustClosedHandOn(hands[HandUtil.RIGHT], HandUtil.RIGHT)) {
+        else if (this.handUtil.JustClosedHandOn(hands, HandUtil.RIGHT)) {
             Debug.Log("Just CLOSED RIGHT hand");
         }
 
-        this.handUtil.SaveHandsState(hands);
+        this.handUtil.SavePreviousHands(hands);
+        
 
         /*
         if (hands[HandUtil.RIGHT] != null) {

@@ -8,14 +8,13 @@ public class HandUtil
 {
     public static int LEFT = 0;
     public static int RIGHT = 1;
-    private bool[] isOpenedHands;
-    private bool[,] isOpenedFingers;
+    private bool[] isOpenedPreviousHands;
+    private Hand[] previousHands;
 
     public HandUtil() {
-        this.isOpenedHands = new bool[2];
-        this.isOpenedHands.Fill(false);
-        this.isOpenedFingers = new bool[2, 5];
-        this.isOpenedFingers.Fill(false);
+        this.isOpenedPreviousHands = new bool[2];
+        this.isOpenedPreviousHands.Fill(false);
+        this.previousHands = new Hand[2];
     }
 
     /*
@@ -45,7 +44,9 @@ public class HandUtil
 
 
     /*
-     * すべての指が開いているかを返す
+     * Returns whether your five fingers are opened
+     * @param hand Leap.Hand left or right hand
+     * @return whether your five fingers are opened
      */
     public static bool IsOpenedFiveFingers(Hand hand)
     {
@@ -56,11 +57,20 @@ public class HandUtil
     }
 
     /*
-     * 
+     * Save whether your previous hands are opened
+     * @param hands Leap.Hand[] both hands
      */
-    public void SaveHandsState(Hand[] hands) {
-        this.isOpenedHands[HandUtil.LEFT] = HandUtil.IsOpenedFiveFingers(hands[HandUtil.LEFT]);
-        this.isOpenedHands[HandUtil.RIGHT] = HandUtil.IsOpenedFiveFingers(hands[HandUtil.RIGHT]);
+    public void SavePreviousHands(Hand[] hands) {
+        if (hands[HandUtil.LEFT] != null) {
+            //this.isOpenedPreviousHands[HandUtil.LEFT] = HandUtil.IsOpenedFiveFingers(hands[HandUtil.LEFT]);
+            this.previousHands[HandUtil.LEFT] = hands[LEFT];
+        }
+        if (hands[HandUtil.RIGHT] != null) {
+            //this.isOpenedPreviousHands[HandUtil.RIGHT] = HandUtil.IsOpenedFiveFingers(hands[HandUtil.RIGHT]);
+            this.previousHands[HandUtil.RIGHT] = hands[RIGHT];
+        }
+        //Debug.Log("Left: " + this.isOpenedPreviousHands[HandUtil.LEFT]);
+        //Debug.Log("Right: " + this.isOpenedPreviousHands[HandUtil.RIGHT]);
     }
 
     /*
@@ -69,11 +79,12 @@ public class HandUtil
      * @param handId: HandUtil.LEFT(=0) or HandUtil.RIGHT(=1)
      * @return whether it's opened (true or false)
      */
-    public bool JustOpenedHandOn(Hand hand, int handId)
+    public bool JustOpenedHandOn(Hand[] hands, int handId)
     {
+        Hand hand = hands[handId];
         //過去手を閉じていて，現在の手が存在し，その手の指が全部開くとき
-        if (!this.isOpenedHands[handId] && hand != null && HandUtil.IsOpenedFiveFingers(hand)) {
-            this.isOpenedHands[handId] = true; //Just opened hand
+        if (!this.isOpenedPreviousHands[handId] && hand != null && HandUtil.IsOpenedFiveFingers(hand)) {
+            this.isOpenedPreviousHands[handId] = true; //Just opened hand
             return true; //Opened
         }
         return false; //Not Opened
@@ -85,22 +96,27 @@ public class HandUtil
      * @param handId: HandUtil.LEFT(=0) or HandUtil.RIGHT(=1)
      * @return whether it's opened (true or false)
      */
-    public bool JustClosedHandOn(Hand hand, int handId)
+    public bool JustClosedHandOn(Hand[] hands, int handId)
     {
+        Hand hand = hands[handId];
         //過去手を開いていて，現在の手が存在し，その手の指が全部閉じるとき
-        if (this.isOpenedHands[handId] && hand != null && !HandUtil.IsOpenedFiveFingers(hand)) {
-            this.isOpenedHands[handId] = false; //Just closed hand
+        if (this.isOpenedPreviousHands[handId] && hand != null && !HandUtil.IsOpenedFiveFingers(hand)) {
+            this.isOpenedPreviousHands[handId] = false; //Just closed hand
             return true; //Closed
         }
         return false; //Not Closed
     }
 
+    /*
     public static bool JustOpendIndexFinger(Hand hand) {
         foreach (Finger f in hand.Fingers) {
-            if (f.IsExtended)
+            if (f.IsExtended) {
+
+            }
         }
 
     }
+    */
 
     public static Vector3 GetVector3(Vector v) {
         return new Vector3(v.x, v.y, v.z);
