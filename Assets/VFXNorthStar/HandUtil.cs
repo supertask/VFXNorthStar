@@ -5,8 +5,9 @@ using UnityEngine;
 using Leap;
 using Leap.Unity;
 
-enum HandActionType: int { JUST_OPENED, JUST_CLOSED }
-enum FingerActionType: int { JUST_OPENED, JUST_CLOSED }
+public enum HandActionType: int { JUST_OPENED, JUST_CLOSED }
+public enum FingerActionType: int { JUST_OPENED, JUST_CLOSED }
+public enum HandStatus : int { OPEN, CLOSE, UNKNOWN }
 
 public class HandUtil
 {
@@ -49,31 +50,18 @@ public class HandUtil
         return hands;
     }
 
-
-    /*
-     * Returns whether your five fingers are opened
-     *
-     * @param hand Leap.Hand left or right hand
-     * @return whether your five fingers are opened
-     */
-    public static bool IsOpenedFiveFingers(Hand hand)
-    {
-        foreach (Finger f in hand.Fingers) {
-            if (! f.IsExtended) { return false; }
-        }
-        return true;
-    }
-
     /*
      * Returns whether the hand is grabbed (four fingers are closed).
      *
      * Check out GrabStreangth variable of Hand class
      * https://leapmotion.github.io/UnityModules/class_leap_1_1_hand.html#ae3b86d4d13139d772be092b6838ee9b5
      */
-    public static bool IsOpenedHand(Hand hand)
+    public static HandStatus GetHandStatus(Hand hand)
     {
         //The strength is zero for an open hand
-        return hand.GrabStrength > 0 ? false : true;
+        if (hand.GrabStrength == 0.0f) { return HandStatus.OPEN; }
+        else if (hand.GrabStrength == 1.0f) { return HandStatus.CLOSE; }
+        else { return HandStatus.UNKNOWN; }
     }
 
     /*
@@ -85,7 +73,13 @@ public class HandUtil
         foreach(int handId in this.handIds) {
             Hand hand = hands[handId];
             if (hand != null) {
-                this.isOpenedPreviousHands[handId] = HandUtil.IsOpenedFiveFingers(hand);
+                if (HandUtil.GetHandStatus(hand) == HandStatus.OPEN) {
+                    this.isOpenedPreviousHands[handId] = true;
+                }
+                else if (HandUtil.GetHandStatus(hand) == HandStatus.CLOSE) {
+                    this.isOpenedPreviousHands[handId] = false;
+                }
+                else { } //何も保存しない
             }
         }
         //Debug.Log("Left: " + this.isOpenedPreviousHands[HandUtil.LEFT]);
@@ -144,14 +138,14 @@ public class HandUtil
             switch (actionType) {
                 case HandActionType.JUST_OPENED:
                     //Whether the hand is just opened
-                    if ( ! this.isOpenedPreviousHands[handId] && HandUtil.IsOpenedFiveFingers(hand)) {
+                    if ( ! this.isOpenedPreviousHands[handId] && HandUtil.GetHandStatus(hand) == HandStatus.OPEN) {
                         this.isOpenedPreviousHands[handId] = true; //hand status
                         return true; //Just opened
                     }
                     break;
                 case HandActionType.JUST_CLOSED:
                     //Whether the hand is just closed
-                    if (this.isOpenedPreviousHands[handId] && ! HandUtil.IsOpenedFiveFingers(hand)) {
+                    if (this.isOpenedPreviousHands[handId] && HandUtil.GetHandStatus(hand) == HandStatus.CLOSE) {
                         this.isOpenedPreviousHands[handId] = false; //hand status
                         return true; //Just closed
                     }

@@ -65,14 +65,14 @@ public class ParticleTouchController : MonoBehaviour
         if (this.handUtil.JustOpenedHandOn(hands, this.attractorHandId)) {
             Debug.Log("Just OPENED RIGHT hand");
             //Show attractor
-            //this.curAttractor = this.attractors[this.curAttractorIndex];
-            //this.curAttractor.GetComponent<VisualEffect>().enabled = true;
+            this.curAttractor = this.attractors[this.curAttractorIndex];
+            this.curAttractor.GetComponent<VisualEffect>().enabled = true;
         }
         else if (this.handUtil.JustClosedHandOn(hands, this.attractorHandId)) {
             Debug.Log("Just CLOSED RIGHT hand");
 
             //Unshow attractor
-            //this.curAttractor.GetComponent<VisualEffect>().enabled = false;
+            this.curAttractor.GetComponent<VisualEffect>().enabled = false;
             this.curAttractorIndex = (this.curAttractorIndex + 1) % this.attractors.Count; //Go next attractor
         }
 
@@ -87,8 +87,8 @@ public class ParticleTouchController : MonoBehaviour
             this.IsFingerEffector = false;
         }
 
-        /*
         if (this.curAttractor != null) {
+            //Attractor exists
             Hand hand = hands[this.attractorHandId];
             if (hand != null) {
                 AttractorParam param = this.attractorParams[this.curAttractorIndex];
@@ -99,7 +99,6 @@ public class ParticleTouchController : MonoBehaviour
         }
         if (this.IsFingerEffector) {
         }
-        */
  
         this.handUtil.SavePreviousHands(hands);
         this.handUtil.SavePreviousFingers(hands);
