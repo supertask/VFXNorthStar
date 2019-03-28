@@ -10,3 +10,6 @@ Thomas attractor using the VFX Graph
 Lorenz attractor using the VFX Graph
 
 ![Lorenz attractor](./images/lorenz_attractor.gif)
+
+## License
+GNU General Public License v3.0
