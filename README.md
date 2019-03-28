@@ -1,5 +1,5 @@
 # VFXNorthStar
-Visual Efffect Graph on Project North Star.
+Visual Effect Graph on Project North Star.
 
 ## Thomas' cyclically symmetric attractor
 Thomas attractor using the VFX Graph
