@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.75, g: 0.75, b: 0.75, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 0
+  m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
@@ -35,10 +35,10 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 0
+  m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0}
+  m_IndirectSpecularColor: {r: 0.037641965, g: 0.047974292, b: 0.061336875, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -144,44 +144,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56d1f88d63df26544a9f0b97e2af63c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Foci1: {fileID: 8522378}
-  Foci2: {fileID: 832940317}
-  MinorAxis: 0.244949
-  MajorAxis: 0.30999848
+  Foci1: {fileID: 0}
+  Foci2: {fileID: 0}
+  MinorAxis: 0.1
+  MajorAxis: 0
   worldToSphereSpace:
-    e00: 0.85017866
-    e01: -0.0000001088454
-    e02: 3.992976
-    e03: -0.17606248
-    e10: -1.0118903
-    e11: 3.9492178
-    e12: 0.21545029
-    e13: -0.6495091
-    e20: -3.052106
-    e21: -0.81748
-    e22: 0.6498501
-    e23: 0.49983653
+    e00: 0
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 0
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 0
+    e23: 0
     e30: 0
     e31: 0
     e32: 0
-    e33: 1
+    e33: 0
   sphereToWorldSpace:
-    e00: 0.051010743
-    e01: -0.060713433
-    e02: -0.2933045
-    e03: 0.11615147
-    e10: -0.0000000018250123
-    e11: 0.23695312
-    e12: -0.07855906
-    e13: 0.19316989
-    e20: 0.23957863
-    e21: 0.012927022
-    e22: 0.062449966
-    e23: 0.019362248
+    e00: 0
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 0
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 0
+    e23: 0
     e30: 0
     e31: 0
     e32: 0
-    e33: 1
+    e33: 0
 --- !u!23 &8522376
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -274,11 +274,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29207d17cdd06e84d9fecbdef2401c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 932643130}
+  manager: {fileID: 0}
   _hoverEnabled: 1
   _contactEnabled: 1
   _graspingEnabled: 1
-  _leapProvider: {fileID: 2036328975}
+  _leapProvider: {fileID: 0}
   _handDataMode: 0
   enabledPrimaryHoverFingertips: 0101010000
 --- !u!4 &43348190
@@ -294,6 +294,98 @@ Transform:
   m_Children: []
   m_Father: {fileID: 932643131}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &126453390
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 126453394}
+  - component: {fileID: 126453393}
+  - component: {fileID: 126453392}
+  - component: {fileID: 126453391}
+  m_Layer: 0
+  m_Name: Capsule
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!136 &126453391
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126453390}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &126453392
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126453390}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &126453393
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126453390}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &126453394
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126453390}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.02, y: -0.49, z: 2.76}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &128910192
 GameObject:
@@ -864,11 +956,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04122797dd84ca43a07055f12d91e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handedness: 1
-  _showArm: 0
+  handedness: 0
+  _showArm: 1
   _castShadows: 1
-  _material: {fileID: 2100000, guid: 4eb51ea9b5562364983315fd1ee6eaef, type: 2}
-  _sphereMesh: {fileID: 4300002, guid: 2f496b1b1bec86743b418551f859020c, type: 3}
+  _material: {fileID: 0}
+  _sphereMesh: {fileID: 0}
   _cylinderResolution: 12
   _jointRadius: 0.008
   _cylinderRadius: 0.006
@@ -905,7 +997,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _displayInGameView: 1
   _enabledForBuild: 1
-  _sphereMesh: {fileID: 4300000, guid: d3c658b9d2d991e49944fe238fc8b166, type: 3}
+  _sphereMesh: {fileID: 0}
   _gizmoShader: {fileID: 4800000, guid: 309635e4933310a4d98f0e016c806769, type: 3}
 --- !u!4 &391630930
 Transform:
@@ -1423,24 +1515,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c592f16851a620743868a31232613370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _leapProvider: {fileID: 2036328975}
-  ModelPool:
-  - GroupName: CapsuleHands
-    _handModelManager: {fileID: 0}
-    LeftModel: {fileID: 944837004}
-    IsLeftToBeSpawned: 0
-    RightModel: {fileID: 385757743}
-    IsRightToBeSpawned: 0
-    IsEnabled: 1
-    CanDuplicate: 0
-  - GroupName: Occlusion
-    _handModelManager: {fileID: 0}
-    LeftModel: {fileID: 0}
-    IsLeftToBeSpawned: 0
-    RightModel: {fileID: 0}
-    IsRightToBeSpawned: 0
-    IsEnabled: 0
-    CanDuplicate: 0
+  _leapProvider: {fileID: 0}
+  ModelPool: []
 --- !u!1 &563878906
 GameObject:
   m_ObjectHideFlags: 0
@@ -1658,7 +1734,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &789671856
 Transform:
   m_ObjectHideFlags: 0
@@ -1681,7 +1757,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 789671855}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
@@ -1978,7 +2054,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  _handModel: {fileID: 944837004}
+  _handModel: {fileID: 0}
   ControlsTransform: 1
   ShowGizmos: 1
   ActivateDistance: 0.03
@@ -2135,10 +2211,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handedness: 0
-  _showArm: 0
+  _showArm: 1
   _castShadows: 1
-  _material: {fileID: 2100000, guid: b1898d6530834a54b9816e1a61f299e6, type: 2}
-  _sphereMesh: {fileID: 4300002, guid: 2f496b1b1bec86743b418551f859020c, type: 3}
+  _material: {fileID: 0}
+  _sphereMesh: {fileID: 0}
   _cylinderResolution: 12
   _jointRadius: 0.008
   _cylinderRadius: 0.006
@@ -2221,8 +2297,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 949d5532f99564b4b96430d75aac18d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LeapProvider: {fileID: 2036328975}
-  ExtrapolationAmount: 30000
+  LeapProvider: {fileID: 0}
+  ExtrapolationAmount: 30
 --- !u!1 &1071717850
 GameObject:
   m_ObjectHideFlags: 0
@@ -2357,7 +2433,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  _handModel: {fileID: 385757743}
+  _handModel: {fileID: 0}
   ControlsTransform: 1
   ShowGizmos: 1
   ActivateDistance: 0.03
@@ -2386,15 +2462,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243615918}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d2004977d4549f48a1b0c0ee1c88681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pinchDetectorA: {fileID: 891310766}
-  _pinchDetectorB: {fileID: 1153669782}
-  _oneHandedRotationMethod: 1
-  _twoHandedRotationMethod: 1
+  _pinchDetectorA: {fileID: 0}
+  _pinchDetectorB: {fileID: 0}
+  _oneHandedRotationMethod: 0
+  _twoHandedRotationMethod: 0
   _allowScale: 1
   _toggleGuiState: 0
   _showGUI: 0
@@ -2654,7 +2730,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1355442425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2781,11 +2857,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eyePerspective: {fileID: 1391621715}
-  ellipse: {fileID: 8522375}
-  Screen: {fileID: 442108693}
-  filter: {fileID: 2048702614}
-  meshResolution: {x: 31, y: 30}
-  deformer: {fileID: 1610863108}
+  ellipse: {fileID: 0}
+  Screen: {fileID: 0}
+  filter: {fileID: 0}
+  meshResolution: {x: 10, y: 10}
+  deformer: {fileID: 0}
   aspectRatio: 0.8
   autoRefreshRuntimeEditor: 1
 --- !u!114 &1391621714
@@ -3411,12 +3487,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2fa5133e0a26a74bb35605dc32ee814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  filter: {fileID: 2048702614}
+  filter: {fileID: 0}
   isLeftEye: 0
-  mainCamera: {fileID: 1795598957}
+  mainCamera: {fileID: 0}
   vertexIndices: 
   controlPoints: []
-  drawRuntimeGizmos: 0
+  drawRuntimeGizmos: 1
 --- !u!1 &1619307261
 GameObject:
   m_ObjectHideFlags: 0
@@ -3812,12 +3888,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29207d17cdd06e84d9fecbdef2401c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 932643130}
+  manager: {fileID: 0}
   _hoverEnabled: 1
   _contactEnabled: 1
   _graspingEnabled: 1
-  _leapProvider: {fileID: 2036328975}
-  _handDataMode: 1
+  _leapProvider: {fileID: 0}
+  _handDataMode: 0
   enabledPrimaryHoverFingertips: 0101010000
 --- !u!4 &1717609386
 Transform:
@@ -4121,12 +4197,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2fa5133e0a26a74bb35605dc32ee814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  filter: {fileID: 1619307263}
-  isLeftEye: 1
-  mainCamera: {fileID: 1795598957}
+  filter: {fileID: 0}
+  isLeftEye: 0
+  mainCamera: {fileID: 0}
   vertexIndices: 
   controlPoints: []
-  drawRuntimeGizmos: 0
+  drawRuntimeGizmos: 1
 --- !u!1 &1766668652
 GameObject:
   m_ObjectHideFlags: 0
@@ -4459,7 +4535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05c34f681030bfe4dab8959b627a1239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xShift: 2560
+  xShift: 1920
   yShift: 0
   robustFullScreen: 0
 --- !u!114 &1820911000
@@ -4475,25 +4551,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   calibrationsFolder:
-    _assetFolder: {fileID: 102900000, guid: 4351705f5d86ae640bc491da1a3f5a1f, type: 3}
+    _assetFolder: {fileID: 0}
     _relativePath: 
   saveCalibrationKey: 115
-  outputCalibrationFile: Calibrations/Tasuku.json
-  inputCalibrationFile: Calibrations/Tasuku.json
+  outputCalibrationFile: outputCalibration.json
+  inputCalibrationFile: defaultCalibration.json
   loadInputFileOnStart: 1
   calibratedComponents:
-    _keys:
-    - Left Eye
-    - Right Eye
-    - Left Screen
-    - Right Screen
-    - Leap Hand Controller
-    _values:
-    - {fileID: 1760197060}
-    - {fileID: 1610863107}
-    - {fileID: 1646259927}
-    - {fileID: 442108693}
-    - {fileID: 1664736713}
+    _keys: []
+    _values: []
 --- !u!114 &1820911001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4509,10 +4575,10 @@ MonoBehaviour:
   ipd: 0.064
   heightOffset: -0.0048
   depthOffset: -0.0048
-  leftEyeIPDTransform: {fileID: 1760197060}
-  leftEyeARRaytracer: {fileID: 1971245739}
-  rightEyeIPDTransform: {fileID: 1610863107}
-  rightEyeARRaytracer: {fileID: 1391621713}
+  leftEyeIPDTransform: {fileID: 0}
+  leftEyeARRaytracer: {fileID: 0}
+  rightEyeIPDTransform: {fileID: 0}
+  rightEyeARRaytracer: {fileID: 0}
   adjustWiderKey: 275
   adjustNarrowerKey: 276
   adjustHigherKey: 273
@@ -4573,7 +4639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   childrenStartEnabled: 0
-  toggleKey: 99
+  toggleKey: 50
 --- !u!1 &1874065236
 GameObject:
   m_ObjectHideFlags: 0
@@ -4644,44 +4710,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56d1f88d63df26544a9f0b97e2af63c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Foci1: {fileID: 1933729133}
-  Foci2: {fileID: 1489974878}
-  MinorAxis: 0.244949
-  MajorAxis: 0.3099985
+  Foci1: {fileID: 0}
+  Foci2: {fileID: 0}
+  MinorAxis: 0.1
+  MajorAxis: 0
   worldToSphereSpace:
-    e00: 0.8501789
-    e01: -0.00000004664803
-    e02: -3.992976
-    e03: 0.17606254
-    e10: 1.0118903
-    e11: 3.949218
-    e12: 0.21545021
-    e13: -0.6495091
-    e20: 3.0521057
-    e21: -0.81747997
-    e22: 0.64985
-    e23: 0.49983653
+    e00: 0
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 0
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 0
+    e23: 0
     e30: 0
     e31: 0
     e32: 0
-    e33: 1
+    e33: 0
   sphereToWorldSpace:
-    e00: 0.051010743
-    e01: 0.06071343
-    e02: 0.29330453
-    e03: -0.11615148
-    e10: -0.0000000018250123
-    e11: 0.23695312
-    e12: -0.07855906
-    e13: 0.19316989
-    e20: -0.23957863
-    e21: 0.012927016
-    e22: 0.06244999
-    e23: 0.019362252
+    e00: 0
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 0
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 0
+    e23: 0
     e30: 0
     e31: 0
     e32: 0
-    e33: 1
+    e33: 0
 --- !u!23 &1933729131
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4852,11 +4918,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eyePerspective: {fileID: 1971245737}
-  ellipse: {fileID: 1933729130}
-  Screen: {fileID: 1646259927}
-  filter: {fileID: 1619307263}
-  meshResolution: {x: 31, y: 30}
-  deformer: {fileID: 1760197061}
+  ellipse: {fileID: 0}
+  Screen: {fileID: 0}
+  filter: {fileID: 0}
+  meshResolution: {x: 10, y: 10}
+  deformer: {fileID: 0}
   aspectRatio: 0.8
   autoRefreshRuntimeEditor: 1
 --- !u!114 &1971245740
@@ -5088,19 +5154,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb0e8dd6c809854f8fea5e0976884f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  editTimePose: 1
-  _frameOptimization: 1
-  _physicsExtrapolation: 0
+  editTimePose: 0
+  _frameOptimization: 0
+  _physicsExtrapolation: 1
   _physicsExtrapolationTime: 0.011111111
   _workerThreadProfiling: 0
-  _deviceOffsetMode: 2
+  _deviceOffsetMode: 0
   _deviceOffsetYAxis: 0
   _deviceOffsetZAxis: 0.12
   _deviceTiltXAxis: 5
-  _deviceOrigin: {fileID: 1664736713}
-  _temporalWarpingMode: 3
-  _customWarpAdjustment: 27
-  _updateHandInPrecull: 1
+  _deviceOrigin: {fileID: 0}
+  _temporalWarpingMode: 0
+  _customWarpAdjustment: 17
+  _updateHandInPrecull: 0
 --- !u!81 &2036328976
 AudioListener:
   m_ObjectHideFlags: 0
@@ -5261,8 +5327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55383fe93d704a947861d5442d081c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetObjs:
-  - {fileID: 1820910997}
+  targetObjs: []
   targetClass: 3
   resetDeviceIds: 9
 --- !u!4 &2145334841
