@@ -17,7 +17,7 @@ Lorenz attractor using the VFX Graph
 ![Lorenz attractor](./images/lorenz_attractor.gif)
 
 ## Source
-- keijiro/KvantSpray - [https://github.com/keijiro/Rsvfx](https://github.com/keijiro/Rsvfx)
+- keijiro/Rsvfx - [https://github.com/keijiro/Rsvfx](https://github.com/keijiro/Rsvfx)
 - Indie Visual Lab/Attractors (https://indievisuallab.stores.jp/items/5bc08f64a6e6ee273e000e4b)
 
 ## License
