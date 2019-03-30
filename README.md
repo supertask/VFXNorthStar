@@ -2,7 +2,7 @@
 Visual Effect Graph on Project North Star.
 
 ## Keijiro's Rsvfx
-Keijiro's VFX with Real Sense 
+Keijiro's VFX Graph examples with Real Sense 
 
 ![Real Sense VFX Graph demo](./images/RsvfxNorthStar.gif)
 
