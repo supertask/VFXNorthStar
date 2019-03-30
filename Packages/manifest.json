@@ -9,6 +9,8 @@
     "com.unity.render-pipelines.high-definition": "4.6.0-preview",
     "com.unity.render-pipelines.lightweight": "4.6.0-preview",
     "com.unity.shadergraph": "4.6.0-preview",
+    "jp.keijiro.kino.post-processing": "https://github.com/keijiro/Kino.git#upm",
+    "jp.keijiro.klak": "https://github.com/keijiro/Klak.git#upm",
     "com.unity.textmeshpro": "1.3.0",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
@@ -40,5 +42,15 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
+  },
+  "lock": {
+    "jp.keijiro.klak": {
+      "hash": "998c115201969984019639126bc8d0001c79d243",
+      "revision": "upm"
+    },
+    "jp.keijiro.kino.post-processing": {
+      "hash": "0996b2d07dc1000963cc7264e5528abbebde8425",
+      "revision": "upm"
+    }
   }
 }

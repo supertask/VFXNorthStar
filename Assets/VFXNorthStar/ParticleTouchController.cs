@@ -22,6 +22,11 @@ public class ParticleTouchController : MonoBehaviour
     public GameObject leapProviderObj = null;
     public bool IsAttractorOnLeftHand = false;
     public List<GameObject> attractors;
+    public List<float> attractorDistances;
+    public List<float> attractorScales;
+    public List<Vector3> attractorAddQuaternions;
+    public List<Vector3> attractorAddPositions;
+    public GameObject fingerTip;
 
     private LeapServiceProvider m_Provider;
     private GameObject selecting;
@@ -33,7 +38,6 @@ public class ParticleTouchController : MonoBehaviour
     private bool IsFingerEffector;
     private int attractorHandId;
     private int effectorHandId;
-    private AttractorParam[] attractorParams;
     private Hand[] previousHands;
 
     void Start() { this.Init(); }
@@ -45,13 +49,9 @@ public class ParticleTouchController : MonoBehaviour
         this.curAttractorIndex = 0;
         this.attractorHandId = this.IsAttractorOnLeftHand ? HandUtil.LEFT : HandUtil.RIGHT;
         this.effectorHandId = this.IsAttractorOnLeftHand ? HandUtil.RIGHT : HandUtil.LEFT;
-        this.attractorParams = new AttractorParam[2] {
-            // Scale, Distance, AdditionalRotation
-            new AttractorParam(0.04f, 0.25f, Quaternion.Euler(0, 0, 0)), //ThomasCyclicallySymmetricAttractor
-            new AttractorParam(0.01f, 0.2f, Quaternion.Euler(0, 0, 0)) //LorenzAttractor
-        };
-        for (int i = 0; i< this.attractorParams.Length; i++) {
-            attractors[i].transform.localScale = this.attractorParams[i].scale;
+        for (int i = 0; i< this.attractorScales.Count; i++) {
+            float s = this.attractorScales[i];
+            attractors[i].transform.localScale = new Vector3(s,s,s);
         }
         this.previousHands = new Hand[2];
     }
@@ -78,8 +78,6 @@ public class ParticleTouchController : MonoBehaviour
 
         if (this.handUtil.JustOpenedFingerOn(hands, this.effectorHandId, (int)Finger.FingerType.TYPE_INDEX)) {
             Debug.Log("Just OPENED RIGHT index finger");
-            GameObject attractor = this.attractors[this.curAttractorIndex];
-
             this.IsFingerEffector = true;
         }
         else if (this.handUtil.JustClosedFingerOn(hands, this.effectorHandId, (int)Finger.FingerType.TYPE_INDEX)) {
@@ -87,17 +85,29 @@ public class ParticleTouchController : MonoBehaviour
             this.IsFingerEffector = false;
         }
 
-        if (this.curAttractor != null) {
-            //Attractor exists
+        //Attractor and hand exists
+        if (this.curAttractor != null && hands[this.attractorHandId] != null) {
             Hand hand = hands[this.attractorHandId];
-            if (hand != null) {
-                AttractorParam param = this.attractorParams[this.curAttractorIndex];
-                Vector attractorPos = hand.PalmPosition + param.distance * hand.PalmNormal;
-                this.curAttractor.transform.position = HandUtil.GetVector3(attractorPos);
-                this.curAttractor.transform.rotation = HandUtil.GetQuaternion(hand.Rotation) * param.addQuaternion;
-            }
+
+            //手の中心とアトラクターとの距離から表示位置を割り出す
+            Vector attractorPos = hand.PalmPosition +
+                    this.attractorDistances[this.curAttractorIndex] * hand.PalmNormal;
+
+            //アトラクターの位置を補正（attractorAddPositions）
+            this.curAttractor.transform.position = HandUtil.GetVector3(attractorPos) +
+                    this.attractorAddPositions[this.curAttractorIndex];
+            //アトラクターの回転を補正（attractorAddQuaternions）
+            this.curAttractor.transform.rotation = HandUtil.GetQuaternion(hand.Rotation) *
+                    Quaternion.Euler(this.attractorAddQuaternions[this.curAttractorIndex]);
         }
-        if (this.IsFingerEffector) {
+
+        //FingerEffect and hand exists
+        if (this.IsFingerEffector && hands[this.effectorHandId] != null) {
+
+            Finger indexFinger = hands[this.effectorHandId].Fingers[(int)Finger.FingerType.TYPE_INDEX];
+            Vector3 tipPosition = HandUtil.GetVector3(indexFinger.TipPosition);
+            this.fingerTip.transform.position = tipPosition;
+            //Debug.Log("tipPos: " + tipPosition);
         }
  
         this.handUtil.SavePreviousHands(hands);
