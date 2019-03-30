@@ -18,7 +18,7 @@ Lorenz attractor using the VFX Graph
 
 ## Source
 - keijiro/Rsvfx - https://github.com/keijiro/Rsvfx
-- Indie Visual Lab/Attractors (https://indievisuallab.stores.jp/items/5bc08f64a6e6ee273e000e4b)
+- Indie Visual Lab/Attractors - https://indievisuallab.stores.jp/items/5bc08f64a6e6ee273e000e4b
 
 ## License
 GNU General Public License v3.0
